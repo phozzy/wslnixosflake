@@ -26,9 +26,12 @@ with lib;
   };
   
   # Enable nix flakes
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes recursive-nix
+    '';
+    systemFeatures = [ "recursive-nix" ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
